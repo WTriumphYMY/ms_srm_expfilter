@@ -1,7 +1,5 @@
 package cn.edu.nwpu.ms_srm_expfilter.domain;
 
-import javax.persistence.*;
-
 /**
  * @ClassName SrmExperiment
  * @Author: gd
@@ -9,22 +7,14 @@ import javax.persistence.*;
  * @Version: v1.0
  * @Description:实体对应数据库的表
  */
-@Entity
-@Table(name = "tb_experiment")
+
 public class SrmExperiment {
-    @Id//主键
-    @GeneratedValue(strategy= GenerationType.IDENTITY)//自增策略
-    @Column(name = "pk_id")
+
     private int pkId;
-    @Column(name = "exp_time")
     private String expTime;
-    @Column(name = "exp_pressure")
     private String expPressure;
-    @Column(name = "exp_force")
     private String expForce;
-    @Column(name = "srm_name")
     private String srmName;
-    @Column(name = "gmt_create")
     private String gmtCreate;
 
     public int getPkId() {

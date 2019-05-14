@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>实验数据</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesom字体 -->
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+<body>
+    <div th:replace="~{fragments/head :: head}"></div>
+    <div class="row ">
+        <div class="col align-self-center">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    选择实验数据
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" th:each="name : ${srmNames}" th:href="@{'/smooth/' + ${name}}" th:text="${name}">按钮啦</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4" id="rawPressureFig">
+
+        </div>
+        <div class="col-4" id="smoothPressureFig">
+
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4" id="rawForceFig">
+
+        </div>
+        <div class="col-4" id="smoothForceFig">
+
+        </div>
+    </div>
+
+    <!--<div class="row">-->
+        <!--<div class="col">-->
+            <!--<div id="rawPressureFig"></div>-->
+        <!--</div>-->
+        <!--<div class="col">-->
+            <!--<div id="smoothForceFig"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+        <!--<div class="col">-->
+            <!--<div class="col-md-6" id="rawForceFig"></div>-->
+        <!--</div>-->
+        <!--<div class="col">-->
+            <!--<div class="col-md-6" id="smoothForceFig"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <input type="hidden" id="time" th:value=" ${timeSeries}"/>
+    <input type="hidden" id="rawP" th:value=" ${rawPSeries}"/>
+    <input type="hidden" id="smoothP" th:value=" ${smoothPSeries}"/>
+    <input type="hidden" id="rawF" th:value=" ${rawFSeries}"/>
+    <input type="hidden" id="smoothF" th:value=" ${smoothFSeries}"/>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/highcharts/highcharts.js"></script>
+<script src="/js/highcharts/exporting.js"></script>
+<script src="/js/highcharts/series-label.js"></script>
+<script src="/js/highcharts/oldie.js"></script>
+<script src="/js/highcharts/boost.js"></script>
+</body>
+</html>
