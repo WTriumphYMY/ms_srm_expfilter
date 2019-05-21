@@ -6,9 +6,7 @@ import cn.edu.nwpu.ms_srm_expfilter.service.ExperimentDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -36,8 +34,14 @@ public class IndexController {
         return "newindex";
     }
 
+    @PostMapping("/smoothData")
+    @ResponseBody
+    public List<Double> soothData(@RequestBody double[] doubleList) throws IOException {
+        return experimentDataService.smoothData(doubleList);
+    }
+
     @GetMapping("/smooth/{srmName}")
-    public String sooththData(@PathVariable String srmName, Model model) throws IOException {
+    public String soothData(@PathVariable String srmName, Model model) throws IOException {
         SrmExperiment srmExperiment = expManageClient.getExpByName(srmName);
         String[] tStrArr = srmExperiment.getExpTime().split(",");
         String[] pStrArr = srmExperiment.getExpPressure().split(",");

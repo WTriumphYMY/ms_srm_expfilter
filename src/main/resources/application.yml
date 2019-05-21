@@ -15,3 +15,4 @@ spring:
       prefer-ip-address: false
 server:
   port: 8089
+  max-http-header-size: 4048576
